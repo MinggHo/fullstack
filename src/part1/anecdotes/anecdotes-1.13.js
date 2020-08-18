@@ -6,24 +6,15 @@ const App = (props) => {
   const [points, setPoints] = useState(
     new Array(props.anecdotes.length).fill(0),
   );
-  const [popular, setPopular] = useState('');
 
   const handleClick = () => {
     const copy = [...points];
     copy[selected] += 1;
     setPoints(copy);
-    handlePopular();
-  };
-
-  const handlePopular = () => {
-    let highest = Math.max(...points);
-    let indexOf = points.indexOf(highest);
-    setPopular(props.anecdotes[indexOf]);
   };
 
   return (
     <div>
-      <h1>Anecdote of the day</h1>
       <div>{props.anecdotes[selected]}</div>
       <p>has {points[selected]} votes</p>
       <div>
@@ -36,8 +27,6 @@ const App = (props) => {
           Next anecdote
         </button>
       </div>
-      <h1>Anecdote with most votes</h1>
-      {popular && <p>{popular}</p>}
     </div>
   );
 };
