@@ -8,16 +8,17 @@ const App = (props) => {
   );
   const [popular, setPopular] = useState('');
 
+  //
   const handleClick = () => {
     const copy = [...points];
     copy[selected] += 1;
     setPoints(copy);
-    handlePopular();
+    handlePopular(copy);
   };
 
-  const handlePopular = () => {
-    let highest = Math.max(...points);
-    let indexOf = points.indexOf(highest);
+  const handlePopular = (copy) => {
+    let highest = Math.max(...copy);
+    let indexOf = copy.indexOf(highest);
     setPopular(props.anecdotes[indexOf]);
   };
 
